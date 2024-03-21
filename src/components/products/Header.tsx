@@ -8,7 +8,7 @@ import {
   DialogTrigger,
 } from "@/lib/ui/dialog";
 import { useState } from "react";
-import { Form } from "./Form";
+import { CreatedForm } from "./Form";
 
 export const Header = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -33,7 +33,7 @@ export const Header = () => {
             <DialogHeader>
               <DialogTitle>Crear Producto</DialogTitle>
             </DialogHeader>
-            <Form closeModal={closeModal} />
+            <CreatedForm closeModal={closeModal} />
           </DialogContent>
         </Dialog>
       </div>
