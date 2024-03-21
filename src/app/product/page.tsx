@@ -1,5 +1,5 @@
-import { Header } from "@/components/page/home/Header";
-import ProductRow from "@/components/page/home/ProductRow";
+import { Header } from "@/components/product/Header";
+import ProductRow from "@/components/product/ProductRow";
 import {
   Table,
   TableBody,
