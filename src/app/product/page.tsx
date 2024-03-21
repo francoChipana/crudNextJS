@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/Table";
 import { listProducts } from "@/service/ProductService";
 
-export default async function Home() {
+const productPage = async () => {
   const products = await listProducts();
 
   return (
@@ -35,4 +35,6 @@ export default async function Home() {
       </Table>
     </main>
   );
-}
+};
+
+export default productPage;
