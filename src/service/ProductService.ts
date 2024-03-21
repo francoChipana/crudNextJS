@@ -20,7 +20,6 @@ export const deleteProduct = async (id: string) => {
 export const viewProduct = async (id: string) => {
   const datasource = new ProductDataSource();
   const product = await datasource.view(id);
-  console.log(product);
   return product;
 };
 

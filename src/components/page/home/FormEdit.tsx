@@ -22,8 +22,8 @@ export const FormEdit = ({ product }: Props) => {
 
   const submit = async (data: any) => {
     await editProduct(product.id, data);
-    router.refresh();
     router.push("/");
+    router.refresh();
   };
 
   const onCancel = () => {
