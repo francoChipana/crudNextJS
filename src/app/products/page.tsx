@@ -1,5 +1,5 @@
-import { Header } from "@/components/product/Header";
-import ProductRow from "@/components/product/ProductRow";
+import { Header } from "@/components/products/Header";
+import ProductRow from "@/components/products/ProductRow";
 import {
   Table,
   TableBody,
@@ -19,7 +19,7 @@ const productPage = async () => {
         <TableHeader>
           <TableRow>
             <TableHead className="text-center">ID</TableHead>
-            <TableHead className="text-center">Nombre</TableHead>
+            <TableHead className="text-center max-w-sm">Nombre</TableHead>
             <TableHead className="text-center">Precio</TableHead>
             <TableHead className="text-center">Acciones</TableHead>
           </TableRow>

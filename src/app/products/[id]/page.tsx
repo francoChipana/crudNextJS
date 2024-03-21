@@ -1,4 +1,4 @@
-import { FormEdit } from "@/components/product/[id]/FormEdit";
+import { FormEdit } from "@/components/products/[id]/FormEdit";
 import { viewProduct } from "@/service/ProductService";
 
 const page = async ({ params }: any) => {
