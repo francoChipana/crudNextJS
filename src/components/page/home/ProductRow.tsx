@@ -1,8 +1,8 @@
 "use client";
 
-import { TableCell, TableRow } from "@/components/ui/Table";
-import { Button } from "@/components/ui/button";
 import { Product } from "@/entities/Product";
+import { TableCell, TableRow } from "@/lib/ui/Table";
+import { Button } from "@/lib/ui/button";
 import { deleteProduct } from "@/service/ProductService";
 import { Edit, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";

@@ -6,7 +6,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/Table";
+} from "@/lib/ui/Table";
 import { listProducts } from "@/service/ProductService";
 
 const productPage = async () => {

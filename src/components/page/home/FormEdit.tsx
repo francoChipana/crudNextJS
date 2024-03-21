@@ -1,7 +1,7 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Product } from "@/entities/Product";
+import { Button } from "@/lib/ui/button";
+import { Input } from "@/lib/ui/input";
 import { editProduct } from "@/service/ProductService";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
