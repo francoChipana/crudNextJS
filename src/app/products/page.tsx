@@ -18,10 +18,11 @@ const productPage = async () => {
       <Table className="text-center">
         <TableHeader>
           <TableRow>
-            <TableHead className="text-center">ID</TableHead>
-            <TableHead className="text-center max-w-sm">Nombre</TableHead>
-            <TableHead className="text-center">Precio</TableHead>
-            <TableHead className="text-center">Acciones</TableHead>
+            <TableHead className="text-center ">ID</TableHead>
+            <TableHead className="text-center ">Nombre</TableHead>
+            <TableHead className="text-center ">Imagen</TableHead>
+            <TableHead className="text-center ">Precio</TableHead>
+            <TableHead className="text-center ">Acciones</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
