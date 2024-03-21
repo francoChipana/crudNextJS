@@ -14,7 +14,15 @@ export const Form = ({ closeModal }: Props) => {
   const router = useRouter();
 
   const submit = (data: any) => {
-    createProduct(data);
+    const formData = new FormData();
+
+    formData.append("name", data.name);
+    formData.append("price", data.price);
+    if (data.image.length > 0) {
+      formData.append("image", data.image[0]);
+    }
+
+    createProduct(formData);
     closeModal();
     router.refresh();
   };

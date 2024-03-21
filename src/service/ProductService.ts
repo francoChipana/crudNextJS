@@ -1,5 +1,4 @@
 import { ProductDataSource } from "@/datasouce/ProductDataSource";
-import { Product } from "@/entities/Product";
 
 export const listProducts = async () => {
   const datasource = new ProductDataSource();
@@ -7,7 +6,7 @@ export const listProducts = async () => {
   return products;
 };
 
-export const createProduct = async (product: Product) => {
+export const createProduct = async (product: FormData) => {
   const datasource = new ProductDataSource();
   await datasource.create(product);
 };
@@ -23,7 +22,7 @@ export const viewProduct = async (id: string) => {
   return product;
 };
 
-export const editProduct = async (id: string, data: Product) => {
+export const editProduct = async (id: string, data: FormData) => {
   const datasource = new ProductDataSource();
   await datasource.edit(id, data);
 };

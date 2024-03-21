@@ -21,7 +21,15 @@ export const FormEdit = ({ product }: Props) => {
   const router = useRouter();
 
   const submit = async (data: any) => {
-    await editProduct(product.id, data);
+    const formData = new FormData();
+
+    formData.append("name", data.name);
+    formData.append("price", data.price);
+    if (data.image && data.image.length > 0) {
+      formData.append("image", data.image[0]);
+    }
+
+    await editProduct(product.id, formData);
     router.push("/");
     router.refresh();
   };

@@ -13,7 +13,7 @@ export class ProductDataSource {
     );
   }
 
-  public async create(data: Product) {
+  public async create(data: FormData) {
     await pb.collection("products").create(data);
   }
 
@@ -28,7 +28,7 @@ export class ProductDataSource {
     return new Product(id, record.name, record.price, record.image);
   }
 
-  public async edit(id: string, data: Product) {
+  public async edit(id: string, data: FormData) {
     await pb.collection("products").update(id, data);
   }
 }
