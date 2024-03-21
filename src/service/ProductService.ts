@@ -1,8 +1,8 @@
 import { ProductDataSource } from "@/datasouce/ProductDataSource";
 
-export const listProducts = async () => {
+export const listProducts = async (page?: number) => {
   const datasource = new ProductDataSource();
-  const products = await datasource.list();
+  const products = await datasource.list(page);
   return products;
 };
 

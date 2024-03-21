@@ -24,7 +24,7 @@ const ProductRow = ({ product }: Props) => {
       <TableCell className="flex gap-4 justify-center">
         <Link
           className="bg-blue-600 hover:bg-blue-500 p-2 text-sm text-white rounded-md"
-          href={`/products/${product.id}`}
+          href={`/products/edit/${product.id}`}
         >
           <Edit />
         </Link>

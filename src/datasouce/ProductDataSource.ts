@@ -2,15 +2,17 @@ import { pb } from "@/config/pocketbase";
 import { Product } from "@/entities/Product";
 
 export class ProductDataSource {
-  public async list() {
-    const records = await pb
-      .collection("products")
-      .getFullList({ cache: "no-cache" });
+  public async list(page?: number) {
+    const records = await pb.collection("products").getList(page || 1, 10, {
+      cache: "no-cache",
+    });
 
-    return records.map(
-      (record) =>
-        new Product(record.id, record.name, record.price, record.image)
-    );
+    return {
+      ...records,
+      items: records.items.map(
+        (item) => new Product(item.id, item.name, item.price, item.image)
+      ),
+    };
   }
 
   public async create(data: FormData) {
