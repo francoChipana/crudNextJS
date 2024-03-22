@@ -1,6 +1,6 @@
 import { Header } from "@/components/products/Header";
 import Pagination from "@/components/products/Pagination";
-import ProductRow from "@/components/products/ProductRow";
+import ProductCard from "@/components/products/ProductCard";
 import { listProducts } from "@/service/ProductService";
 
 const productPage = async ({ searchParams }: { searchParams: any }) => {
@@ -11,9 +11,9 @@ const productPage = async ({ searchParams }: { searchParams: any }) => {
   return (
     <main className="container mt-10 max-w-6xl">
       <Header />
-      <section className="grid grid-cols-5 gap-4">
+      <section className="grid grid-cols-4 gap-4">
         {products.items.map((product) => (
-          <ProductRow
+          <ProductCard
             key={`product${product.id}`}
             product={JSON.parse(JSON.stringify(product))}
           />
