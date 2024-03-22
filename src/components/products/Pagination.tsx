@@ -7,7 +7,9 @@ import {
   PaginationPrevious,
   Pagination as SPagination,
 } from "@/lib/ui/pagination";
-import { useSearchParams } from "next/navigation";
+import { realtimeProduct } from "@/service/ProductService";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useRef } from "react";
 
 interface Props {
   totalPages: number;
@@ -15,9 +17,18 @@ interface Props {
 
 const Pagination = ({ totalPages }: Props) => {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const currentPage = searchParams.get("page")
     ? Number(searchParams.get("page"))
     : 1;
+
+  const realtime = useRef(() => {
+    realtimeProduct(() => {
+      router.refresh();
+    });
+  });
+
+  realtime.current();
 
   const paginationItems = [];
 

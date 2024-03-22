@@ -34,3 +34,8 @@ export const deleteProductCategories = async (
   const datasource = new ProductDataSource();
   await datasource.deleteCategories(id, categoriesId);
 };
+
+export const realtimeProduct = (fn: any) => {
+  const datasource = new ProductDataSource();
+  datasource.realtime(fn);
+};

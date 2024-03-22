@@ -58,4 +58,10 @@ export class ProductDataSource {
       "category-": categoriesId,
     });
   }
+
+  public async realtime(fn: any) {
+    pb.collection("products").subscribe("*", function (e) {
+      fn();
+    });
+  }
 }
