@@ -1,4 +1,5 @@
 import { Header } from "@/components/products/Header";
+import Pagination from "@/components/products/Pagination";
 import ProductRow from "@/components/products/ProductRow";
 import {
   Table,
@@ -7,26 +8,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/lib/ui/Table";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-} from "@/lib/ui/pagination";
 import { listProducts } from "@/service/ProductService";
 
-const productPage = async () => {
-  const { totalPages, ...products } = await listProducts();
-  const paginationItems = [];
-
-  for (let i = 1; i <= totalPages; i++) {
-    paginationItems.push(
-      <PaginationItem>
-        <PaginationLink href={`/products/${i}`}>{i}</PaginationLink>
-      </PaginationItem>
-    );
-  }
+const productPage = async ({ searchParams }: { searchParams: any }) => {
+  const { totalPages, ...products } = await listProducts(
+    searchParams.page ? Number(searchParams.page) : 1
+  );
 
   return (
     <main className="container mt-10 max-w-6xl">
@@ -50,14 +37,7 @@ const productPage = async () => {
           ))}
         </TableBody>
       </Table>
-      <Pagination>
-        <PaginationContent>
-          {paginationItems.map((page) => page)}
-          <PaginationItem>
-            <PaginationNext href={"products/2"} />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+      <Pagination totalPages={totalPages} />
     </main>
   );
 };
