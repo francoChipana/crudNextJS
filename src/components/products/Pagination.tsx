@@ -30,7 +30,7 @@ const Pagination = ({ totalPages }: Props) => {
   }
 
   return (
-    <SPagination className="select-none">
+    <SPagination className="select-none mb-4">
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious

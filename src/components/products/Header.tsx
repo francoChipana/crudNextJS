@@ -1,4 +1,5 @@
 "use client";
+import { Category } from "@/entities/Category";
 import { Button } from "@/lib/ui/button";
 import {
   Dialog,
@@ -10,7 +11,11 @@ import {
 import { useState } from "react";
 import { CreatedForm } from "./Form";
 
-export const Header = () => {
+interface Props {
+  categories: Category[];
+}
+
+export const Header = ({ categories }: Props) => {
   const [openModal, setOpenModal] = useState(false);
   const onOpenChange = () => {
     setOpenModal((prev) => !prev);
@@ -33,7 +38,7 @@ export const Header = () => {
             <DialogHeader>
               <DialogTitle>Crear Producto</DialogTitle>
             </DialogHeader>
-            <CreatedForm closeModal={closeModal} />
+            <CreatedForm closeModal={closeModal} categories={categories} />
           </DialogContent>
         </Dialog>
       </div>

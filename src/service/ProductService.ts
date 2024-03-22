@@ -26,3 +26,11 @@ export const editProduct = async (id: string, data: FormData) => {
   const datasource = new ProductDataSource();
   await datasource.edit(id, data);
 };
+
+export const deleteProductCategories = async (
+  id: string,
+  categoriesId: string[]
+) => {
+  const datasource = new ProductDataSource();
+  await datasource.deleteCategories(id, categoriesId);
+};

@@ -39,4 +39,9 @@ export const formScheme = z.object({
           : true,
       "El tamaño máximo de la imagen es de 5MB."
     ),
+  categories: z
+    .array(z.string())
+    .refine((value) => value.some((item) => item), {
+      message: "Tienes que seleccionar al menos una categoria",
+    }),
 });

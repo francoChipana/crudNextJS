@@ -6,12 +6,14 @@ export class Product {
   public price: number;
   public image: string;
   public categories: Category[];
+  public categoriesId: string[];
 
   constructor(
     id: string,
     name: string,
     price: number,
     image: string,
+    categoriesId: string[],
     categories: Category[]
   ) {
     this.id = id;
@@ -19,6 +21,7 @@ export class Product {
     this.price = price;
     this.image = image;
     this.categories = categories;
+    this.categoriesId = categoriesId;
   }
 
   public getJSON() {

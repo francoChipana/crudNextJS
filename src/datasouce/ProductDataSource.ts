@@ -13,7 +13,6 @@ export class ProductDataSource {
       ...records,
       items: records.items.map((item) => {
         const categories = item.expand?.category.map((category: any) => {
-          console.log(category);
           return new Category(category.id, category.name, category.description);
         });
         return new Product(
@@ -21,6 +20,7 @@ export class ProductDataSource {
           item.name,
           item.price,
           item.image,
+          item.category,
           categories
         );
       }),
@@ -39,10 +39,23 @@ export class ProductDataSource {
     const record = await pb.collection("products").getOne(id, {
       cache: "no-cache",
     });
-    return new Product(id, record.name, record.price, record.image, []);
+    return new Product(
+      id,
+      record.name,
+      record.price,
+      record.image,
+      record.category,
+      []
+    );
   }
 
   public async edit(id: string, data: FormData) {
     await pb.collection("products").update(id, data);
+  }
+
+  public async deleteCategories(id: string, categoriesId: string[]) {
+    await pb.collection("products").update(id, {
+      "category-": categoriesId,
+    });
   }
 }

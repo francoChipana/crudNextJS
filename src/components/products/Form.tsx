@@ -1,5 +1,7 @@
 "use client";
+import { Category } from "@/entities/Category";
 import { Button } from "@/lib/ui/button";
+import { Checkbox } from "@/lib/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -17,9 +19,10 @@ import { formScheme } from "./shared/schemaValidation";
 
 interface Props {
   closeModal: () => void;
+  categories: Category[];
 }
 
-export const CreatedForm = ({ closeModal }: Props) => {
+export const CreatedForm = ({ closeModal, categories }: Props) => {
   const form = useForm({
     resolver: zodResolver(formScheme),
   });
@@ -31,8 +34,13 @@ export const CreatedForm = ({ closeModal }: Props) => {
 
     formData.append("name", data.name);
     formData.append("price", data.price);
+
     if (data.image && data.image.length > 0) {
       formData.append("image", data.image[0]);
+    }
+
+    for (const category of data.categories) {
+      formData.append("category", category);
     }
 
     createProduct(formData);
@@ -106,6 +114,53 @@ export const CreatedForm = ({ closeModal }: Props) => {
               </FormItem>
             );
           }}
+        />
+
+        <FormField
+          control={form.control}
+          name="categories"
+          defaultValue={[]}
+          render={() => (
+            <FormItem>
+              <div className="mb-4">
+                <FormLabel className="text-base">Categorias</FormLabel>
+              </div>
+              {categories.map((category) => (
+                <FormField
+                  key={category.id}
+                  control={form.control}
+                  name="categories"
+                  render={({ field }) => {
+                    return (
+                      <FormItem
+                        key={category.id}
+                        className="flex flex-row items-start space-x-3 space-y-0"
+                      >
+                        <FormControl>
+                          <Checkbox
+                            checked={field.value?.includes(category.id)}
+                            onCheckedChange={(checked) => {
+                              return checked
+                                ? field.onChange([...field.value, category.id])
+                                : field.onChange(
+                                    field.value?.filter(
+                                      (value: string) => value !== category.id
+                                    )
+                                  );
+                            }}
+                          />
+                        </FormControl>
+                        <FormLabel className="text-sm font-normal">
+                          {category.name}
+                        </FormLabel>
+                      </FormItem>
+                    );
+                  }}
+                />
+              ))}
+              <FormMessage className="text-red-600" />
+            </FormItem>
+          )}
         />
 
         <Button type="submit">Registrar</Button>
